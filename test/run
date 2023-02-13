@@ -1,0 +1,10 @@
+#! /usr/bin/env sh
+
+FILE="test/$1.test.js"
+export DIR="${2:-challenge}"
+
+# Log an error if no argument passed in
+[ $# -eq 0 ] && { echo "Please pass a challenge number: e.g. ./tests 1"; exit 1; }
+
+# --experimental-loader allows importing of .jsx files
+node --no-warnings --experimental-loader ./test/jsx-loader.js "$FILE";
